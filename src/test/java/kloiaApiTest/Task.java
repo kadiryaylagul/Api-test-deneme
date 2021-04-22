@@ -101,20 +101,17 @@ public class Task {
 
         Long idToDelete = createdId;
 
-
         given().
                 pathParam("id",idToDelete)
                 .when()
                 .delete("/pet/{id}")
                 .then()
-                .statusCode(200).log().all()
+                .statusCode(200)
                 .and()
                 .contentType("application/json")
                 .and()
-                .assertThat().body("message",equalTo(idToDelete),
+                .assertThat().body("message",equalTo(String.valueOf(idToDelete)),
                 "type",equalTo("unknown"));
-
-
 
 
 
